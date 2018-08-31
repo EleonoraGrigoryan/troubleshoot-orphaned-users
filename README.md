@@ -1,2 +1,3 @@
 # troubleshoot-orphaned-users
-Transaction SQL script to find and reassign orphaned users in MS SQL Server
+Script finds orphaned users for a specified database then remaps it to sa login.
+> Script does not reference contained users
