@@ -21,7 +21,7 @@ where sp.SID is null and dp.name != 'dbo'
 		fetch next from cr_users into @userholder
 
 		-- Find the Count of Users
-		select @count = count(dp.SID) 
+		select @count = count(dp.SID)   -- Optional
 		from sys.database_principals as dp   
 		left join sys.server_principals as sp  
 			on dp.SID = sp.SID  
@@ -31,7 +31,7 @@ where sp.SID is null and dp.name != 'dbo'
 
 		while @@fetch_status = 0
 		begin
-		    while @countOfUsers <> @count
+		    while @countOfUsers <> @count  -- Optional
 			  begin
 				  set @countOfUsers = @countOfUsers + 1
 				  set @dynamic = 'create login forOrphaned' + cast(@countOfUsers as nvarchar(40)) + ' with password = ''1234AbCd'''
